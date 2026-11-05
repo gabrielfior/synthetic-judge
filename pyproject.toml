@@ -1,0 +1,21 @@
+[project]
+name = "synthetic-judge"
+version = "0.1.0"
+description = "Estimate how a specific judge is likely to rule, from their own published rulings"
+readme = "README.md"
+requires-python = ">=3.11.9"
+dependencies = [
+    "playwright>=1.62.0",
+    "pyarrow>=25.0.1",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+# a raiz do repo no path: os testes importam `sj` sem PYTHONPATH na linha de comando
+pythonpath = ["."]

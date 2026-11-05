@@ -1,0 +1,150 @@
+{
+  "descricao": "Taxonomia v2 de Procedimento Comum Cível em Limeira (29 classes, 6 grupos). Revisada à mão a partir da amostra de descoberta (389 casos): fusão de compra/venda e rescisão de imóvel, nova classe de ação regressiva de seguradora, três redefinições e fronteira cobrança x prestação afiada. A v1 está no histórico do git. Refazê-la invalida os números medidos contra ela.",
+  "classes": [
+    {
+      "nome": "Revisão de contrato bancário",
+      "definicao": "Ações revisionais de contratos bancários de empréstimo, financiamento, consignado ou cartão que discutem juros, capitalização, tarifas ou encargos, com repetição de indébito; ficam de fora ações fundadas em fraude, inexistência de contratação ou cobrança.",
+      "grupo": "Crédito e serviços bancários"
+    },
+    {
+      "nome": "Fraude e golpe bancário",
+      "definicao": "Ações indenizatórias e/ou declaratórias por transferências, saques, empréstimos, compras ou Pix não autorizados decorrentes de golpes, fraudes eletrônicas ou uso indevido de conta e cartão; ficam de fora discussões contratuais ordinárias e descontos consignados não autorizados.",
+      "grupo": "Fraude e descontos indevidos"
+    },
+    {
+      "nome": "Consignado não contratado",
+      "definicao": "Ações declaratórias de inexistência de débito ou nulidade de contrato de empréstimo ou cartão consignado que o autor nega ter celebrado, com repetição de indébito e danos morais; ficam de fora revisões de contratos reconhecidos e fraudes em contratos admitidos.",
+      "grupo": "Fraude e descontos indevidos"
+    },
+    {
+      "nome": "Desconto associativo não autorizado",
+      "definicao": "Ações contra associações, sindicatos ou clubes de benefícios por descontos não autorizados em benefício previdenciário, com inexigibilidade de débito e/ou indenização; ficam de fora fraudes bancárias e revisões de contratos de crédito.",
+      "grupo": "Fraude e descontos indevidos"
+    },
+    {
+      "nome": "Cobrança de dívida bancária",
+      "definicao": "Ações de cobrança ou execução movidas por instituição financeira ou cessionária contra devedor para recebimento de crédito de empréstimo, financiamento, conta corrente ou título; ficam de fora cobranças de aluguel, condomínio, serviços e mercadorias.",
+      "grupo": "Crédito e serviços bancários"
+    },
+    {
+      "nome": "Negativação indevida",
+      "definicao": "Ações declaratórias de inexigibilidade de débito cumuladas com indenização por danos morais por inscrição indevida em cadastros de inadimplentes; ficam de fora cobranças de dívidas reconhecidas e revisões contratuais.",
+      "grupo": "Crédito e serviços bancários"
+    },
+    {
+      "nome": "Adjudicação compulsória de imóvel",
+      "definicao": "Ações para outorga de escritura definitiva ou adjudicação de imóvel objeto de compromisso de compra e venda já quitado; ficam de fora rescisões contratuais, usucapião e litígios possessórios.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Reintegração de posse por inadimplência",
+      "definicao": "Ações de rescisão de compromisso de compra e venda cumuladas com reintegração de posse do imóvel por falta de pagamento; ficam de fora ações de despejo locatício e rescisões sem pedido possessório.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Locação de imóvel",
+      "definicao": "Ações de cobrança de aluguéis e encargos, despejo, arbitramento de aluguel ou rescisão fundadas em locação residencial ou comercial; ficam de fora compra e venda de imóvel, condomínio e cobrança de comissão de corretagem.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Cobrança de cota condominial ou associativa",
+      "definicao": "Ações de cobrança de taxas de manutenção, cotas condominiais ou associativas; ficam de fora cobranças locatícias, extinção de condomínio e cobranças de serviços em geral.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Extinção de condomínio e divisão de bem",
+      "definicao": "Ações de extinção de condomínio, divisão de bem comum ou arbitramento de aluguel pelo uso exclusivo entre herdeiros, ex-cônjuges ou coproprietários; ficam de fora cobranças de cotas condominiais e locações.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Cobrança de dívida por serviços ou mercadorias",
+      "definicao": "Ação em que o credor cobra um valor certo — duplicata, nota, mensalidade, multa contratual — por serviços prestados ou mercadorias entregues; o réu não discute a execução do serviço, só o pagamento.",
+      "grupo": "Cobrança e contratos de serviços"
+    },
+    {
+      "nome": "Indenização por acidente de trânsito",
+      "definicao": "Ações de reparação de danos materiais, morais ou estéticos causados por colisão ou atropelamento, inclusive cobrança de DPVAT e ação regressiva de seguradora; ficam de fora vícios de veículo e extravio de bagagem.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Vício de produto e compra de veículo ou bem móvel",
+      "definicao": "Ação do comprador por defeito, vício redibitório ou descumprimento na compra de veículo ou outro bem móvel (carro, moto, celular), contra concessionária, locadora ou fabricante.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Indenização por danos em imóvel",
+      "definicao": "Ação do proprietário, possuidor ou locatário contra o causador de danos materiais ou morais ligados a um imóvel (vazamento, obra vizinha, queda de energia, infiltração); fica de fora a ação regressiva de seguradora.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Indenização por danos causados por animais",
+      "definicao": "Ações de reparação por ataques, invasões ou prejuízos provocados por animais de estimação; ficam de fora danos ambientais e acidentes de trânsito.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Indenização por danos morais em relações pessoais",
+      "definicao": "Ações de reparação por ofensas, agressões, denunciação caluniosa ou condutas ilícitas entre particulares fora de relação de consumo ou de trabalho; ficam de fora danos decorrentes de contrato, acidente ou fraude bancária.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Plano de saúde e erro médico",
+      "definicao": "Ações contra operadoras de plano de saúde ou hospitais por recusa, demora ou erro em atendimento médico, exames, internação, home care ou cobertura, com obrigação de fazer e/ou indenização; ficam de fora ações contra o SUS e seguros de vida.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Indenização por falha em seguro",
+      "definicao": "Ação do segurado ou beneficiário contra a própria seguradora por negativa de cobertura, atraso ou valor de indenização de seguro; fica de fora a ação regressiva da seguradora contra terceiros.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Usucapião de imóvel ou bem móvel",
+      "definicao": "Ações de usucapião extraordinária ou ordinária de imóvel ou veículo visando declaração de domínio; ficam de fora adjudicações compulsórias e ações de desconstituição de registro.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Anulação de ato jurídico (doação, fiança, escritura)",
+      "definicao": "Ação para anular ou declarar nula doação, fiança, escritura, partilha ou ato praticado sem outorga do cônjuge, e o cancelamento do registro correspondente; fica de fora a rescisão de compra e venda.",
+      "grupo": "Imóveis, posse e condomínio"
+    },
+    {
+      "nome": "Compra, venda e rescisão de imóvel",
+      "grupo": "Imóveis, posse e condomínio",
+      "definicao": "Ações sobre contrato de compra e venda, promessa, loteamento, incorporação ou cooperativa habitacional: rescisão com devolução de valores, cumprimento, imissão na posse e danos do comprador; fica de fora a adjudicação compulsória, a reintegração por inadimplência e a usucapião."
+    },
+    {
+      "nome": "Consórcio",
+      "definicao": "Ações de prestação de contas, anulação de execução extrajudicial ou revisão de contratos de consórcio, com restituição ou suspensão de leilão; ficam de fora financiamentos bancários comuns.",
+      "grupo": "Crédito e serviços bancários"
+    },
+    {
+      "nome": "Prestação de serviços e construção",
+      "definicao": "Ação sobre contrato de prestação de serviços, obra, franquia, fornecimento (inclusive energia): obrigação de fazer, inadimplemento ou rescisão do serviço, discutindo a execução e não só o preço devido.",
+      "grupo": "Cobrança e contratos de serviços"
+    },
+    {
+      "nome": "Transporte aéreo e pacote turístico",
+      "definicao": "Ações indenizatórias ou de rescisão por atraso, cancelamento, extravio de bagagem ou falha em transporte aéreo e pacotes turísticos; ficam de fora transportes terrestres, marítimos e acidentes de trânsito.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Benefício previdenciário",
+      "definicao": "Ações contra o INSS visando concessão, restabelecimento ou revisão de benefício previdenciário, como auxílio-acidente, aposentadoria ou BPC, com pagamento de atrasados; ficam de fora descontos consignados e ações contra bancos.",
+      "grupo": "Previdenciário"
+    },
+    {
+      "nome": "Responsabilidade de plataforma digital",
+      "definicao": "Ações de obrigação de fazer e/ou indenizatórias contra provedores de aplicativos, redes sociais ou plataformas de intermediação por bloqueio de conta, invasão de perfil ou falha na prestação do serviço; ficam de fora fraudes bancárias e compras online.",
+      "grupo": "Consumo e responsabilidade civil"
+    },
+    {
+      "nome": "Exigir contas e exibição de documentos",
+      "definicao": "Ação de exigir contas, exibição de documentos ou contratos e produção antecipada de provas, em geral contra banco ou administrador, sem pedir ainda a condenação.",
+      "grupo": "Cobrança e contratos de serviços"
+    },
+    {
+      "nome": "Ação regressiva de seguradora",
+      "grupo": "Consumo e responsabilidade civil",
+      "definicao": "Ação da seguradora contra o terceiro causador do sinistro (distribuidora de energia, condutor, empresa) para ressarcir o que pagou ao segurado; fica de fora a ação do segurado contra a própria seguradora."
+    }
+  ]
+}

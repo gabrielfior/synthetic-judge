@@ -1,0 +1,2 @@
+# Fixtures são páginas capturadas verbatim: não normalizar quebras de linha.
+tests/fixtures/*.html -text

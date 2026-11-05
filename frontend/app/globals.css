@@ -1,0 +1,865 @@
+:root {
+  color-scheme: light;
+
+  --papel: #fbfaf7;
+  --tinta: #26235c;
+  --vinho: #7a1f3d;
+  --margem: #d8d3c4;
+  --fraco: #6e6a7c;
+
+  /* Onde cai a régua de margem — a mesma medida ancora tudo na página. */
+  --margem-x: 3.25rem;
+  --recuo: calc(var(--margem-x) + 1.5rem);
+  /* Largura da coluna de conteúdo: a tela toda, dentro do recuo da margem.
+     Para voltar a uma medida de leitura estreita, troque por algo como 68ch. */
+  --medida: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-ui), system-ui, sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* A régua corre continuamente por trás de tudo, como na folha dos autos. */
+.tela {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100dvh;
+  background-image: linear-gradient(
+    to right,
+    transparent 0 calc(var(--margem-x) - 1px),
+    var(--margem) calc(var(--margem-x) - 1px) var(--margem-x),
+    transparent var(--margem-x)
+  );
+}
+
+.cabeca {
+  padding: 1.75rem var(--recuo) 1.25rem;
+  border-bottom: 1px solid var(--margem);
+}
+
+.juizo {
+  margin: 0;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.15;
+}
+
+.acervo {
+  margin: 0.45rem 0 0;
+  color: var(--fraco);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.autos {
+  overflow-y: auto;
+  padding: 1.75rem 0 2.5rem;
+}
+
+.turno {
+  position: relative;
+  padding: 0 var(--recuo);
+  margin-bottom: 1.75rem;
+}
+
+/* A marca no vinho do lápis do juiz diz de quem é o turno. */
+.turno-usuario::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--margem-x) - 2px);
+  top: 0.4rem;
+  width: 3px;
+  height: 1.1em;
+  background: var(--vinho);
+}
+
+.pergunta {
+  margin: 0;
+  max-width: var(--medida);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.resposta {
+  max-width: var(--medida);
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.72;
+}
+
+.resposta p,
+.resposta ul,
+.resposta ol,
+.resposta blockquote {
+  margin: 0 0 0.85em;
+}
+
+.resposta > :last-child {
+  margin-bottom: 0;
+}
+
+/* Títulos dentro da resposta são sinalização, não prosa: vão na fonte da
+   interface, como o resto da estrutura da página. */
+.resposta h1,
+.resposta h2,
+.resposta h3,
+.resposta h4 {
+  margin: 1.5em 0 0.5em;
+  font-family: var(--fonte-ui), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.resposta > :first-child {
+  margin-top: 0;
+}
+
+.resposta ul,
+.resposta ol {
+  padding-left: 1.3em;
+}
+
+.resposta li {
+  margin-bottom: 0.3em;
+}
+
+.resposta strong {
+  font-weight: 600;
+}
+
+/* O remark-gfm autolinka URLs soltas, então links aparecem mesmo sem o modelo
+   escrever markdown de link. */
+.resposta a {
+  color: var(--vinho);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.resposta blockquote {
+  padding-left: 0.9em;
+  border-left: 2px solid var(--margem);
+  color: var(--fraco);
+}
+
+.resposta code {
+  font-family: var(--fonte-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+}
+
+.resposta pre {
+  overflow-x: auto;
+  padding: 0.8em 0.9em;
+  border-left: 2px solid var(--margem);
+}
+
+/* A tabela rola dentro do próprio invólucro, para a página nunca rolar na
+   horizontal. O invólucro é que rola — a tabela segue sendo uma tabela, senão
+   as células param de alinhar. */
+.tabela {
+  overflow-x: auto;
+  margin: 0 0 0.85em;
+}
+
+.resposta table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--fonte-ui), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.45;
+}
+
+/* Fio forte sob o cabeçalho, fio fraco entre linhas: a diferença de peso é que
+   diz onde acaba o rótulo e começa o dado. */
+.resposta thead th {
+  padding: 0 1.1em 0.4em 0;
+  border-bottom: 1px solid var(--tinta);
+  color: var(--fraco);
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.resposta tbody td {
+  padding: 0.5em 1.1em 0.5em 0;
+  border-bottom: 1px solid var(--margem);
+  text-align: left;
+  vertical-align: top;
+}
+
+.resposta tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.resposta th:last-child,
+.resposta td:last-child {
+  padding-right: 0;
+}
+
+/* Dentro da tabela o processo já está em dígitos tabulares: o mono seria
+   redundante e desalinharia a coluna. */
+.resposta td .processo {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.resposta hr {
+  margin: 1.4em 0;
+  border: 0;
+  border-top: 1px solid var(--margem);
+}
+
+.processo {
+  font-family: var(--fonte-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+  color: var(--vinho);
+  white-space: nowrap;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.45em;
+  height: 1.05em;
+  margin-left: 0.06em;
+  vertical-align: text-bottom;
+  background: var(--tinta);
+  animation: pisca 1.05s steps(2, jump-none) infinite;
+}
+
+@keyframes pisca {
+  50% {
+    opacity: 0;
+  }
+}
+
+.pensando {
+  color: var(--fraco);
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+}
+
+.vazio {
+  padding: 0.5rem var(--recuo);
+  max-width: var(--medida);
+}
+
+.convite {
+  margin: 0 0 1rem;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.exemplos {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.35rem;
+}
+
+.exemplo {
+  padding: 0.2rem 0;
+  border: 0;
+  background: none;
+  color: var(--fraco);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--margem);
+  text-underline-offset: 0.28em;
+  cursor: pointer;
+}
+
+.exemplo:hover {
+  color: var(--vinho);
+  text-decoration-color: var(--vinho);
+}
+
+/* A falha fala a mesma língua estrutural de um turno: marca na margem, texto no
+   vinho. Sem painel tingido nem segunda borda. */
+.falha {
+  position: relative;
+  padding: 0 var(--recuo);
+  margin-bottom: 1.75rem;
+  max-width: var(--medida);
+  color: var(--vinho);
+}
+
+.falha::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--margem-x) - 2px);
+  top: 0.35rem;
+  width: 3px;
+  height: 1.1em;
+  background: var(--vinho);
+}
+
+.falha p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.tentar {
+  margin-top: 0.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--vinho);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+
+.compositor {
+  display: flex;
+  align-items: end;
+  gap: 0.75rem;
+  padding: 1rem var(--recuo) 1.25rem;
+  border-top: 1px solid var(--margem);
+}
+
+/* A escrita ocupa a largura disponível; o botão fecha a linha à direita. */
+.escrita {
+  flex: 1;
+  padding: 0.5rem 0;
+  max-width: var(--medida);
+  min-height: 1.6rem;
+  max-height: 9rem;
+  border: 0;
+  background: none;
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  resize: none;
+}
+
+.escrita::placeholder {
+  color: var(--fraco);
+}
+
+.escrita:focus {
+  outline: none;
+}
+
+.enviar {
+  flex: none;
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--tinta);
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.enviar:disabled {
+  border-color: var(--margem);
+  background: none;
+  color: var(--fraco);
+  cursor: not-allowed;
+}
+
+.enviar-parar {
+  border-color: var(--vinho);
+  background: none;
+  color: var(--vinho);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vinho);
+  outline-offset: 3px;
+}
+
+.escrita:focus-visible {
+  outline-offset: 0;
+}
+
+@media (max-width: 34rem) {
+  :root {
+    --margem-x: 1.75rem;
+    --recuo: calc(var(--margem-x) + 1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+
+/* ───────────────────────── Prognóstico ─────────────────────────
+   A mesma folha dos autos, mas que rola: a régua de margem corre por trás e cada
+   seção marca a sua entrada nela, no vinho, como o turno do usuário no chat. */
+
+.folha {
+  min-height: 100dvh;
+  background-image: linear-gradient(
+    to right,
+    transparent 0 calc(var(--margem-x) - 1px),
+    var(--margem) calc(var(--margem-x) - 1px) var(--margem-x),
+    transparent var(--margem-x)
+  );
+}
+
+.cabeca-linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.ligacao {
+  color: var(--fraco);
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-decoration-color: var(--margem);
+  text-underline-offset: 0.28em;
+}
+
+.ligacao:hover {
+  color: var(--vinho);
+  text-decoration-color: var(--vinho);
+}
+
+.conteudo {
+  padding: 1.75rem 0 4rem;
+}
+
+/* As linhas de seção vão até a borda, como a do cabeçalho; o que limita a
+   largura do texto é o recuo à direita, não a largura do contêiner. */
+.descricao,
+.consulta,
+.achado,
+.limites,
+.conteudo > .falha,
+.nota-pagina {
+  position: relative;
+  padding-right: max(var(--recuo), calc(100% - 62rem));
+  padding-left: var(--recuo);
+}
+
+.descricao {
+  margin-bottom: 2.25rem;
+}
+
+.descricao-rotulo {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+
+.descricao-texto {
+  display: block;
+  width: 100%;
+  min-height: 5.5rem;
+  max-height: 16rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--margem);
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  resize: none;
+}
+
+.descricao-texto::placeholder {
+  color: var(--fraco);
+}
+
+.descricao-texto:focus-visible {
+  outline-offset: 0;
+}
+
+.descricao-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.descricao .exemplos {
+  margin-top: 1rem;
+}
+
+.falha-pagina {
+  margin-bottom: 1.75rem;
+}
+
+/* Cada seção marca a sua entrada na régua. */
+.consulta h2,
+.achado h2 {
+  position: relative;
+  margin: 0 0 0.9rem;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.1875rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.consulta h2::before,
+.achado h2::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--margem-x) - var(--recuo) - 2px);
+  top: 0.3rem;
+  width: 3px;
+  height: 1.05em;
+  background: var(--vinho);
+}
+
+.consulta {
+  margin-bottom: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--margem);
+}
+
+.orientacao {
+  margin: -0.4rem 0 1.1rem;
+  color: var(--fraco);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.campo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+}
+
+.campo label,
+.campo-escolha legend {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.campo select {
+  max-width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--margem);
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.definicao {
+  margin: 0.55rem 0 0;
+  max-width: 62ch;
+  color: var(--fraco);
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.alternativas {
+  margin: 0.8rem 0 0;
+  color: var(--fraco);
+  font-size: 0.875rem;
+  line-height: 1.9;
+}
+
+.alternativas .exemplo {
+  margin-right: 0.9rem;
+  font-size: 0.875rem;
+}
+
+.campo-escolha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.campo-escolha legend {
+  float: left;
+  margin-right: 0.9rem;
+  padding: 0;
+}
+
+.escolha {
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--margem);
+  background: none;
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.escolha[aria-pressed='true'] {
+  border-color: var(--tinta);
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.porque {
+  margin: 0.9rem 0 0;
+  max-width: 62ch;
+  color: var(--fraco);
+  font-size: 0.8125rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.achados-corpo {
+  transition: opacity 0.15s;
+}
+
+.achados-ocupado {
+  opacity: 0.45;
+}
+
+.achado {
+  padding-top: 1.5rem;
+  padding-bottom: 1.75rem;
+  border-top: 1px solid var(--margem);
+}
+
+.achado-corpo {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 12rem) minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  align-items: start;
+}
+
+.achado-seguinte {
+  margin-top: 1.75rem;
+}
+
+/* O número é o dado; a régua ao lado só mostra o mesmo dado em escala. */
+.numero {
+  margin: 0;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: clamp(2.4rem, 7vw, 3.1rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+
+.unidade {
+  font-size: 0.4em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--fraco);
+}
+
+.achado-texto {
+  min-width: 0;
+}
+
+.frase {
+  margin: 0;
+  max-width: 62ch;
+  font-family: var(--fonte-doc), Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+.detalhe,
+.nota,
+.aviso {
+  margin: 0.6rem 0 0;
+  max-width: 62ch;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+.detalhe {
+  color: var(--fraco);
+}
+
+.nota {
+  color: var(--fraco);
+  font-style: italic;
+}
+
+/* O aviso de que a escada desceu fala a língua da falha: vinho e uma marca. */
+.aviso {
+  padding-left: 0.7rem;
+  border-left: 3px solid var(--vinho);
+  color: var(--vinho);
+  font-weight: 500;
+}
+
+/* A régua: traço fino, intervalo em vinho por cima, estimativa em tinta. */
+.regua {
+  position: relative;
+  max-width: 36rem;
+  margin: 1.2rem 0 0.2rem;
+  padding-top: 1.1rem;
+}
+
+.regua-trilho {
+  position: relative;
+  height: 0.9rem;
+  border-bottom: 1px solid var(--tinta);
+}
+
+.regua-faixa {
+  position: absolute;
+  bottom: -2px;
+  height: 5px;
+  background: var(--vinho);
+}
+
+.regua-ponto {
+  position: absolute;
+  bottom: -5px;
+  width: 2px;
+  height: 0.95rem;
+  background: var(--tinta);
+  transform: translateX(-1px);
+}
+
+.regua-ref {
+  position: absolute;
+  bottom: 0;
+  height: calc(100% + 1.1rem);
+  border-left: 1px dashed var(--fraco);
+}
+
+.regua-ref-rotulo {
+  position: absolute;
+  top: 0;
+  left: 0.3rem;
+  color: var(--fraco);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.regua-ref-fim {
+  right: 0.3rem;
+  left: auto;
+}
+
+.regua-escala {
+  position: relative;
+  height: 1.1rem;
+  margin-top: 0.45rem;
+}
+
+.regua-escala span {
+  position: absolute;
+  white-space: nowrap;
+  color: var(--fraco);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparaveis {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comparaveis li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 1.25rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--margem);
+  font-size: 0.875rem;
+}
+
+.comparaveis li:last-child {
+  border-bottom: 0;
+}
+
+.comparaveis a {
+  color: var(--tinta);
+  text-decoration-color: var(--margem);
+  text-underline-offset: 0.28em;
+}
+
+.comparaveis a:hover {
+  color: var(--vinho);
+  text-decoration-color: var(--vinho);
+}
+
+.processo-num {
+  font-family: var(--fonte-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+}
+
+.comp-meta {
+  color: var(--fraco);
+}
+
+.limites {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--margem);
+  font-size: 0.875rem;
+}
+
+.limites summary {
+  color: var(--fraco);
+  cursor: pointer;
+}
+
+.limites ul {
+  margin: 0.7rem 0 0;
+  padding-left: 1.1rem;
+  max-width: 62ch;
+  color: var(--fraco);
+  line-height: 1.6;
+}
+
+.nota-pagina {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 34rem) {
+  .achado-corpo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .descricao-texto {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .achados-corpo {
+    transition: none;
+  }
+}

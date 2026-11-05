@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+data/
+.claude/
+
+# corpus gerado por coletar_corpus.py; regenerável em ~18 min, fora do git
+data/corpus.parquet
+
+# páginas reais do e-SAJ (nomes de partes e advogados): ficam só na máquina local
+tests/fixtures/*
+!tests/fixtures/README.md
+
+# notas internas de desenho e avaliação: não publicar
+docs/
